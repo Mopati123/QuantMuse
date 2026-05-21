@@ -1,0 +1,14 @@
+# Core dependencies for QuantMuse Interactive Dashboard
+flask==2.3.3
+flask-cors==4.0.0
+flask-socketio==5.3.6
+pandas==2.1.1
+numpy==1.24.3
+requests==2.31.0
+python-socketio==5.8.0
+websockets==11.0.3
+python-dateutil==2.8.2
+
+# Additional dependencies for serverless deployment
+gunicorn==21.2.0
+eventlet==0.33.3

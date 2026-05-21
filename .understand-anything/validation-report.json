@@ -1,0 +1,61 @@
+{
+  "validationDate": "2026-05-11T10:55:00Z",
+  "knowledgeGraph": {
+    "issues": [
+      "Edge target file:static/index.html not found in nodes",
+      "Edge target file:data_service/processors/data_processor.py not found in nodes",
+      "Edge target file:data_service/dashboard/charts.py not found in nodes",
+      "Edge source file:data_service/factors/stock_selector.py not found in nodes",
+      "Edge target file:data_service/storage/cache_manager.py not found in nodes",
+      "Edge target file:data_service/strategies/strategy_registry.py not found in nodes"
+    ],
+    "stats": {
+      "total_nodes": 65,
+      "node_type_file": 48,
+      "node_type_config": 2,
+      "node_type_class": 14,
+      "node_type_doc": 1,
+      "total_edges": 52,
+      "edge_type_contains": 15,
+      "edge_type_imports": 10,
+      "edge_type_configures": 1,
+      "edge_type_tests": 3,
+      "edge_type_uses": 20,
+      "edge_type_serves": 1,
+      "edge_type_documents": 1,
+      "edge_type_extends": 1
+    }
+  },
+  "domainGraph": {
+    "issues": [],
+    "stats": {
+      "total_domain_nodes": 19,
+      "domain_node_type_domain": 5,
+      "domain_node_type_flow": 4,
+      "domain_node_type_step": 10,
+      "total_domain_edges": 17
+    }
+  },
+  "tours": {
+    "issues": [
+      "Tour step references non-existent node: document:README.md",
+      "Tour step references non-existent node: file:data_service/fetchers/yahoo_fetcher.py",
+      "Tour step references non-existent node: file:data_service/processors/data_processor.py",
+      "Tour step references non-existent node: file:data_service/factors/factor_screener.py",
+      "Tour step references non-existent node: file:data_service/strategies/strategy_registry.py"
+    ],
+    "stats": {
+      "total_tours": 4,
+      "total_tour_steps": 16
+    }
+  },
+  "insights": [
+    "Large-scale architecture with 65 components",
+    "Hybrid architecture: 4 C++ components for performance, 45 Python components for flexibility",
+    "Business domains: 5 major functional areas",
+    "Business flows: 4 end-to-end processes",
+    "Implementation steps: 10 detailed operations",
+    "Core system components: 7 critical elements"
+  ],
+  "overallStatus": "ISSUES_FOUND"
+}

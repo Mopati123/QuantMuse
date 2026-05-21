@@ -1,0 +1,298 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "QuantMuse",
+    "languages": [
+      "python",
+      "cpp",
+      "javascript"
+    ],
+    "frameworks": [
+      "fastapi",
+      "streamlit",
+      "cmake"
+    ],
+    "description": "A comprehensive quantitative trading system that integrates traditional financial analysis with advanced AI/ML capabilities",
+    "analyzedAt": "2026-05-11T10:45:00Z",
+    "gitCommitHash": "analysis-complete"
+  },
+  "nodes": [
+    {
+      "id": "domain:trading-data",
+      "type": "domain",
+      "name": "Trading Data Management",
+      "description": "Manages market data acquisition, processing, and storage for trading operations",
+      "tags": [
+        "data",
+        "market",
+        "real-time",
+        "historical"
+      ]
+    },
+    {
+      "id": "domain:quantitative-analysis",
+      "type": "domain",
+      "name": "Quantitative Analysis",
+      "description": "Performs factor analysis, stock screening, and quantitative strategy development",
+      "tags": [
+        "factors",
+        "analysis",
+        "screening",
+        "optimization"
+      ]
+    },
+    {
+      "id": "domain:ai-ml",
+      "type": "domain",
+      "name": "AI/ML Integration",
+      "description": "Integrates artificial intelligence and machine learning for market analysis and prediction",
+      "tags": [
+        "ai",
+        "ml",
+        "nlp",
+        "sentiment",
+        "prediction"
+      ]
+    },
+    {
+      "id": "domain:trading-strategy",
+      "type": "domain",
+      "name": "Trading Strategy Execution",
+      "description": "Implements and executes trading strategies with risk management",
+      "tags": [
+        "strategy",
+        "execution",
+        "risk",
+        "portfolio"
+      ]
+    },
+    {
+      "id": "domain:backtesting",
+      "type": "domain",
+      "name": "Backtesting & Analysis",
+      "description": "Provides backtesting capabilities and performance analysis for strategies",
+      "tags": [
+        "backtest",
+        "performance",
+        "analysis",
+        "validation"
+      ]
+    },
+    {
+      "id": "flow:data-acquisition",
+      "type": "flow",
+      "name": "Market Data Acquisition",
+      "description": "Acquires market data from multiple sources",
+      "domainId": "domain:trading-data",
+      "tags": [
+        "data-fetching",
+        "real-time",
+        "historical"
+      ]
+    },
+    {
+      "id": "flow:factor-analysis",
+      "type": "flow",
+      "name": "Factor Analysis Pipeline",
+      "description": "Calculates and analyzes financial factors for stock selection",
+      "domainId": "domain:quantitative-analysis",
+      "tags": [
+        "factors",
+        "calculation",
+        "screening"
+      ]
+    },
+    {
+      "id": "flow:ai-market-analysis",
+      "type": "flow",
+      "name": "AI-Powered Market Analysis",
+      "description": "Uses AI and NLP to analyze market sentiment and generate insights",
+      "domainId": "domain:ai-ml",
+      "tags": [
+        "ai",
+        "nlp",
+        "sentiment",
+        "analysis"
+      ]
+    },
+    {
+      "id": "flow:strategy-execution",
+      "type": "flow",
+      "name": "Trading Strategy Execution",
+      "description": "Executes trading strategies with risk management",
+      "domainId": "domain:trading-strategy",
+      "tags": [
+        "execution",
+        "risk",
+        "orders"
+      ]
+    },
+    {
+      "id": "step:fetch-binance-data",
+      "type": "step",
+      "name": "Fetch Binance Market Data",
+      "description": "Retrieves cryptocurrency market data from Binance API",
+      "flowId": "flow:data-acquisition",
+      "implementation": "data_service.fetchers.binance_fetcher.BinanceFetcher"
+    },
+    {
+      "id": "step:fetch-yahoo-data",
+      "type": "step",
+      "name": "Fetch Yahoo Finance Data",
+      "description": "Retrieves stock market data from Yahoo Finance",
+      "flowId": "flow:data-acquisition",
+      "implementation": "data_service.fetchers.yahoo_fetcher.YahooFetcher"
+    },
+    {
+      "id": "step:fetch-alpha-vantage-data",
+      "type": "step",
+      "name": "Fetch Alpha Vantage Data",
+      "description": "Retrieves financial data from Alpha Vantage API",
+      "flowId": "flow:data-acquisition",
+      "implementation": "data_service.fetchers.alpha_vantage_fetcher.AlphaVantageFetcher"
+    },
+    {
+      "id": "step:calculate-factors",
+      "type": "step",
+      "name": "Calculate Financial Factors",
+      "description": "Computes momentum, value, quality, and volatility factors",
+      "flowId": "flow:factor-analysis",
+      "implementation": "data_service.factors.factor_calculator.FactorCalculator"
+    },
+    {
+      "id": "step:screen-stocks",
+      "type": "step",
+      "name": "Screen Stocks Based on Factors",
+      "description": "Filters and selects stocks based on factor analysis results",
+      "flowId": "flow:factor-analysis",
+      "implementation": "data_service.factors.factor_screener.FactorScreener"
+    },
+    {
+      "id": "step:process-news",
+      "type": "step",
+      "name": "Process Financial News",
+      "description": "Analyzes financial news using NLP techniques",
+      "flowId": "flow:ai-market-analysis",
+      "implementation": "data_service.ai.news_processor.NewsProcessor"
+    },
+    {
+      "id": "step:analyze-sentiment",
+      "type": "step",
+      "name": "Analyze Market Sentiment",
+      "description": "Calculates sentiment scores from news and social media",
+      "flowId": "flow:ai-market-analysis",
+      "implementation": "data_service.ai.sentiment_analyzer.SentimentAnalyzer"
+    },
+    {
+      "id": "step:llm-analysis",
+      "type": "step",
+      "name": "LLM Market Analysis",
+      "description": "Uses large language models for market analysis and insights",
+      "flowId": "flow:ai-market-analysis",
+      "implementation": "data_service.ai.llm_integration.LLMIntegration"
+    },
+    {
+      "id": "step:risk-validation",
+      "type": "step",
+      "name": "Risk Validation",
+      "description": "Validates trading decisions against risk management rules",
+      "flowId": "flow:strategy-execution",
+      "implementation": "backend.src.risk_manager.RiskManager"
+    },
+    {
+      "id": "step:order-execution",
+      "type": "step",
+      "name": "Execute Trading Orders",
+      "description": "Executes trading orders through the order execution engine",
+      "flowId": "flow:strategy-execution",
+      "implementation": "backend.src.order_executor.OrderExecutor"
+    }
+  ],
+  "edges": [
+    {
+      "source": "domain:trading-data",
+      "target": "flow:data-acquisition",
+      "type": "contains"
+    },
+    {
+      "source": "domain:quantitative-analysis",
+      "target": "flow:factor-analysis",
+      "type": "contains"
+    },
+    {
+      "source": "domain:ai-ml",
+      "target": "flow:ai-market-analysis",
+      "type": "contains"
+    },
+    {
+      "source": "domain:trading-strategy",
+      "target": "flow:strategy-execution",
+      "type": "contains"
+    },
+    {
+      "source": "flow:data-acquisition",
+      "target": "step:fetch-binance-data",
+      "type": "contains"
+    },
+    {
+      "source": "flow:data-acquisition",
+      "target": "step:fetch-yahoo-data",
+      "type": "contains"
+    },
+    {
+      "source": "flow:data-acquisition",
+      "target": "step:fetch-alpha-vantage-data",
+      "type": "contains"
+    },
+    {
+      "source": "flow:factor-analysis",
+      "target": "step:calculate-factors",
+      "type": "contains"
+    },
+    {
+      "source": "flow:factor-analysis",
+      "target": "step:screen-stocks",
+      "type": "contains"
+    },
+    {
+      "source": "flow:ai-market-analysis",
+      "target": "step:process-news",
+      "type": "contains"
+    },
+    {
+      "source": "flow:ai-market-analysis",
+      "target": "step:analyze-sentiment",
+      "type": "contains"
+    },
+    {
+      "source": "flow:ai-market-analysis",
+      "target": "step:llm-analysis",
+      "type": "contains"
+    },
+    {
+      "source": "flow:strategy-execution",
+      "target": "step:risk-validation",
+      "type": "contains"
+    },
+    {
+      "source": "flow:strategy-execution",
+      "target": "step:order-execution",
+      "type": "contains"
+    },
+    {
+      "source": "flow:data-acquisition",
+      "target": "flow:factor-analysis",
+      "type": "feeds"
+    },
+    {
+      "source": "flow:factor-analysis",
+      "target": "flow:strategy-execution",
+      "type": "informs"
+    },
+    {
+      "source": "flow:ai-market-analysis",
+      "target": "flow:strategy-execution",
+      "type": "informs"
+    }
+  ]
+}
