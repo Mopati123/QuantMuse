@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantMuse Architecture Explorer</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/force-graph"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header h1 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 24px;
+        }
+        
+        .header p {
+            margin: 5px 0 0 0;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .container {
+            display: flex;
+            height: calc(100vh - 80px);
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .main-content {
+            flex: 1;
+            position: relative;
+        }
+        
+        .view-controls {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .view-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .view-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .view-btn.active {
+            background: #3498db;
+            color: white;
+        }
+        
+        .view-btn:not(.active) {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .view-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .filter-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .filter-group label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .filter-group select {
+            padding: 5px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        #graph {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .node-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .node-info h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        
+        .node-info p {
+            margin: 5px 0;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        .node-info .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        
+        .tag {
+            background: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .stats-panel {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stats-panel h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .tour-panel {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tour-panel h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        .tour-item {
+            background: #ecf0f1;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tour-item:hover {
+            background: #d5dbdb;
+            transform: translateX(2px);
+        }
+        
+        .tour-title {
+            font-weight: bold;
+            font-size: 13px;
+            color: #2c3e50;
+        }
+        
+        .tour-meta {
+            font-size: 11px;
+            color: #7f8c8d;
+            margin-top: 3px;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 QuantMuse Architecture Explorer</h1>
+        <p>Interactive knowledge graph visualization for the quantitative trading system</p>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <div class="view-controls">
+                <div class="view-buttons">
+                    <button class="view-btn active" onclick="switchView('structural')">Structural</button>
+                    <button class="view-btn" onclick="switchView('domain')">Domain</button>
+                    <button class="view-btn" onclick="switchView('tours')">Tours</button>
+                </div>
+                
+                <div class="filter-controls" id="structural-filters">
+                    <div class="filter-group">
+                        <label>Node Type</label>
+                        <select id="node-type-filter" onchange="updateFilters()">
+                            <option value="">All Types</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Complexity</label>
+                        <select id="complexity-filter" onchange="updateFilters()">
+                            <option value="">All Levels</option>
+                            <option value="simple">Simple</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="complex">Complex</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="filter-controls" id="domain-filters" style="display:none;">
+                    <div class="filter-group">
+                        <label>Domain</label>
+                        <select id="domain-filter" onchange="updateDomainFilters()">
+                            <option value="">All Domains</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-panel">
+                <h3>📊 Graph Statistics</h3>
+                <div id="stats-content">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Nodes:</span>
+                        <span class="stat-value" id="total-nodes">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Edges:</span>
+                        <span class="stat-value" id="total-edges">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Domains:</span>
+                        <span class="stat-value" id="total-domains">-</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tour-panel" id="tour-panel" style="display:none;">
+                <h3>🎓 Guided Tours</h3>
+                <div id="tour-list">
+                    <!-- Tours will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="node-info" id="node-info" style="display:none;">
+                <h3 id="node-title">Node Information</h3>
+                <p id="node-description"></p>
+                <div id="node-tags" class="tags"></div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div id="graph"></div>
+            <div class="loading" id="loading">Loading architecture data...</div>
+        </div>
+    </div>
+    
+    <script>
+        let currentView = 'structural';
+        let knowledgeGraph = null;
+        let domainGraph = null;
+        let tours = null;
+        let graphInstance = null;
+        
+        // Color schemes for different node types
+        const nodeColors = {
+            'file': '#3498db',
+            'class': '#e74c3c',
+            'config': '#f39c12',
+            'domain': '#9b59b6',
+            'flow': '#2ecc71',
+            'step': '#1abc9c',
+            'doc': '#95a5a6'
+        };
+        
+        // Load data
+        async function loadData() {
+            try {
+                const [kgResponse, dgResponse, toursResponse] = await Promise.all([
+                    fetch('knowledge-graph.json'),
+                    fetch('domain-graph.json'),
+                    fetch('tours.json')
+                ]);
+                
+                knowledgeGraph = await kgResponse.json();
+                domainGraph = await dgResponse.json();
+                tours = await toursResponse.json();
+                
+                initializeUI();
+                renderGraph();
+                updateStats();
+                
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').innerHTML = 'Error loading data. Please check file paths.';
+            }
+        }
+        
+        function initializeUI() {
+            // Populate node type filter
+            const nodeTypes = [...new Set(knowledgeGraph.nodes.map(n => n.type))];
+            const nodeTypeFilter = document.getElementById('node-type-filter');
+            nodeTypes.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+                nodeTypeFilter.appendChild(option);
+            });
+            
+            // Populate domain filter
+            if (domainGraph && domainGraph.nodes) {
+                const domains = domainGraph.nodes.filter(n => n.type === 'domain');
+                const domainFilter = document.getElementById('domain-filter');
+                domains.forEach(domain => {
+                    const option = document.createElement('option');
+                    option.value = domain.id;
+                    option.textContent = domain.name;
+                    domainFilter.appendChild(option);
+                });
+            }
+            
+            // Load tours
+            if (tours && tours.tours) {
+                const tourList = document.getElementById('tour-list');
+                tours.tours.forEach(tour => {
+                    const tourItem = document.createElement('div');
+                    tourItem.className = 'tour-item';
+                    tourItem.onclick = () => startTour(tour);
+                    tourItem.innerHTML = `
+                        <div class="tour-title">${tour.name}</div>
+                        <div class="tour-meta">${tour.estimatedTime} • ${tour.difficulty}</div>
+                    `;
+                    tourList.appendChild(tourItem);
+                });
+            }
+        }
+        
+        function switchView(view) {
+            currentView = view;
+            
+            // Update button states
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show/hide filter panels
+            document.getElementById('structural-filters').style.display = view === 'structural' ? 'flex' : 'none';
+            document.getElementById('domain-filters').style.display = view === 'domain' ? 'flex' : 'none';
+            document.getElementById('tour-panel').style.display = view === 'tours' ? 'block' : 'none';
+            
+            renderGraph();
+        }
+        
+        function renderGraph() {
+            const graphContainer = document.getElementById('graph');
+            
+            let graphData;
+            if (currentView === 'structural') {
+                graphData = prepareStructuralGraph();
+            } else if (currentView === 'domain') {
+                graphData = prepareDomainGraph();
+            } else {
+                return; // Tours view handled separately
+            }
+            
+            // Clear previous graph
+            graphContainer.innerHTML = '';
+            
+            // Create new graph
+            graphInstance = ForceGraph()(graphContainer)
+                .graphData(graphData)
+                .nodeId('id')
+                .nodeLabel('name')
+                .nodeColor(node => nodeColors[node.type] || '#95a5a6')
+                .nodeVal(node => {
+                    if (node.type === 'domain') return 12;
+                    if (node.type === 'flow') return 8;
+                    if (node.type === 'class') return 6;
+                    return 4;
+                })
+                .linkColor(() => '#rgba(150, 150, 150, 0.6)')
+                .linkWidth(1)
+                .onNodeClick(node => showNodeInfo(node))
+                .onNodeHover(node => {
+                    graphContainer.style.cursor = node ? 'pointer' : 'default';
+                });
+        }
+        
+        function prepareStructuralGraph() {
+            let nodes = [...knowledgeGraph.nodes];
+            let edges = [...knowledgeGraph.edges];
+            
+            // Apply filters
+            const nodeTypeFilter = document.getElementById('node-type-filter').value;
+            const complexityFilter = document.getElementById('complexity-filter').value;
+            
+            if (nodeTypeFilter) {
+                const nodeIds = nodes.filter(n => n.type === nodeTypeFilter).map(n => n.id);
+                nodes = nodes.filter(n => n.type === nodeTypeFilter);
+                edges = edges.filter(e => nodeIds.includes(e.source) && nodeIds.includes(e.target));
+            }
+            
+            if (complexityFilter) {
+                nodes = nodes.filter(n => n.complexity === complexityFilter);
+            }
+            
+            return { nodes, links: edges };
+        }
+        
+        function prepareDomainGraph() {
+            if (!domainGraph || !domainGraph.nodes) return { nodes: [], links: [] };
+            
+            const domainFilter = document.getElementById('domain-filter').value;
+            let nodes = [...domainGraph.nodes];
+            let edges = [...(domainGraph.edges || [])];
+            
+            if (domainFilter) {
+                const domainNodeIds = nodes.filter(n => n.type === 'domain' && n.id === domainFilter).map(n => n.id);
+                const relatedNodeIds = new Set();
+                
+                edges.forEach(edge => {
+                    if (domainNodeIds.includes(edge.source) || domainNodeIds.includes(edge.target)) {
+                        relatedNodeIds.add(edge.source);
+                        relatedNodeIds.add(edge.target);
+                    }
+                });
+                
+                nodes = nodes.filter(n => relatedNodeIds.has(n.id));
+                edges = edges.filter(e => relatedNodeIds.has(e.source) && relatedNodeIds.has(e.target));
+            }
+            
+            return { nodes, links: edges };
+        }
+        
+        function updateFilters() {
+            if (currentView === 'structural') {
+                renderGraph();
+            }
+        }
+        
+        function updateDomainFilters() {
+            if (currentView === 'domain') {
+                renderGraph();
+            }
+        }
+        
+        function showNodeInfo(node) {
+            const nodeInfo = document.getElementById('node-info');
+            const nodeTitle = document.getElementById('node-title');
+            const nodeDescription = document.getElementById('node-description');
+            const nodeTags = document.getElementById('node-tags');
+            
+            nodeTitle.textContent = node.name || node.id;
+            nodeDescription.textContent = node.summary || node.description || 'No description available';
+            
+            nodeTags.innerHTML = '';
+            if (node.tags) {
+                node.tags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'tag';
+                    tagElement.textContent = tag;
+                    nodeTags.appendChild(tagElement);
+                });
+            }
+            
+            nodeInfo.style.display = 'block';
+        }
+        
+        function updateStats() {
+            document.getElementById('total-nodes').textContent = knowledgeGraph.nodes.length;
+            document.getElementById('total-edges').textContent = knowledgeGraph.edges.length;
+            
+            if (domainGraph && domainGraph.nodes) {
+                const domains = domainGraph.nodes.filter(n => n.type === 'domain').length;
+                document.getElementById('total-domains').textContent = domains;
+            }
+        }
+        
+        function startTour(tour) {
+            alert(`Starting tour: ${tour.name}\n\nThis would navigate through the architecture step by step.\n\nTour steps: ${tour.steps.length}`);
+            // In a full implementation, this would highlight nodes and show step-by-step guidance
+        }
+        
+        // Initialize on load
+        window.addEventListener('load', loadData);
+    </script>
+</body>
+</html>

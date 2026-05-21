@@ -1,0 +1,267 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "project": "QuantMuse",
+    "generatedAt": "2026-05-11T10:50:00Z",
+    "totalTours": 4,
+    "categories": [
+      {
+        "id": "architecture",
+        "name": "Architecture",
+        "description": "System architecture and design patterns"
+      },
+      {
+        "id": "data-flow",
+        "name": "Data Flow",
+        "description": "Data processing and pipeline flows"
+      },
+      {
+        "id": "trading",
+        "name": "Trading",
+        "description": "Trading strategies and execution"
+      },
+      {
+        "id": "ai-ml",
+        "name": "AI/ML",
+        "description": "Artificial intelligence and machine learning"
+      }
+    ]
+  },
+  "tours": [
+    {
+      "id": "tour:architecture-overview",
+      "name": "QuantMuse Architecture Overview",
+      "description": "A comprehensive tour of the QuantMuse quantitative trading system architecture",
+      "estimatedTime": "15 minutes",
+      "difficulty": "beginner",
+      "steps": [
+        {
+          "id": "step:tour-intro",
+          "title": "Welcome to QuantMuse",
+          "description": "QuantMuse is a comprehensive quantitative trading system that combines traditional financial analysis with AI/ML capabilities. Let's explore its architecture.",
+          "nodeIds": [
+            "document:README.md"
+          ],
+          "focusAreas": [
+            "project-overview",
+            "system-architecture"
+          ]
+        },
+        {
+          "id": "step:core-architecture",
+          "title": "Core Architecture Pattern",
+          "description": "The system follows a dual-layer architecture: Python for data processing/AI and C++ for high-performance trading execution.",
+          "nodeIds": [
+            "file:backend/include/common/types.hpp"
+          ],
+          "focusAreas": [
+            "architecture",
+            "data-models"
+          ]
+        },
+        {
+          "id": "step:data-service-layer",
+          "title": "Python Data Service Layer",
+          "description": "The data_service/ directory contains the main Python components for data fetching, analysis, and AI integration.",
+          "nodeIds": [
+            "file:data_service/__init__.py"
+          ],
+          "focusAreas": [
+            "python-layer",
+            "data-processing"
+          ]
+        },
+        {
+          "id": "step:cpp-backend",
+          "title": "C++ Trading Engine",
+          "description": "The backend/ directory contains the high-performance C++ engine for order execution and risk management.",
+          "nodeIds": [
+            "file:backend/src/main.cpp"
+          ],
+          "focusAreas": [
+            "cpp-layer",
+            "trading-engine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tour:data-flow",
+      "name": "Data Flow Pipeline",
+      "description": "Follow the flow of market data from source to trading decision",
+      "estimatedTime": "12 minutes",
+      "difficulty": "intermediate",
+      "steps": [
+        {
+          "id": "step:data-sources",
+          "title": "Market Data Sources",
+          "description": "QuantMuse fetches data from multiple sources: Binance for crypto, Yahoo Finance for stocks, and Alpha Vantage for financial data.",
+          "nodeIds": [
+            "file:data_service/fetchers/binance_fetcher.py",
+            "file:data_service/fetchers/yahoo_fetcher.py",
+            "file:data_service/fetchers/alpha_vantage_fetcher.py"
+          ],
+          "focusAreas": [
+            "data-sources",
+            "api-integration"
+          ]
+        },
+        {
+          "id": "step:data-processing",
+          "title": "Data Processing Pipeline",
+          "description": "Raw data is processed, cleaned, and enriched with technical indicators and features.",
+          "nodeIds": [
+            "file:data_service/processors/data_processor.py"
+          ],
+          "focusAreas": [
+            "data-processing",
+            "feature-engineering"
+          ]
+        },
+        {
+          "id": "step:factor-analysis",
+          "title": "Quantitative Factor Analysis",
+          "description": "The system calculates various financial factors (momentum, value, quality, volatility) for stock selection.",
+          "nodeIds": [
+            "file:data_service/factors/factor_calculator.py",
+            "file:data_service/factors/factor_screener.py"
+          ],
+          "focusAreas": [
+            "factor-analysis",
+            "quantitative-analysis"
+          ]
+        },
+        {
+          "id": "step:ai-analysis",
+          "title": "AI-Powered Analysis",
+          "description": "Machine learning and NLP components provide additional insights through sentiment analysis and LLM integration.",
+          "nodeIds": [
+            "file:data_service/ai/sentiment_analyzer.py",
+            "file:data_service/ai/llm_integration.py"
+          ],
+          "focusAreas": [
+            "ai-ml",
+            "sentiment-analysis"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tour:trading-strategies",
+      "name": "Trading Strategy Framework",
+      "description": "Explore how trading strategies are implemented and executed",
+      "estimatedTime": "10 minutes",
+      "difficulty": "advanced",
+      "steps": [
+        {
+          "id": "step:strategy-framework",
+          "title": "Strategy Architecture",
+          "description": "The strategy framework provides a base for implementing various trading strategies with consistent interfaces.",
+          "nodeIds": [
+            "file:data_service/strategies/strategy_registry.py",
+            "file:backend/include/strategy.hpp"
+          ],
+          "focusAreas": [
+            "strategy-pattern",
+            "framework-design"
+          ]
+        },
+        {
+          "id": "step:risk-management",
+          "title": "Risk Management System",
+          "description": "Critical risk management components validate trading decisions and enforce risk limits.",
+          "nodeIds": [
+            "file:backend/include/risk_manager.hpp"
+          ],
+          "focusAreas": [
+            "risk-management",
+            "position-sizing"
+          ]
+        },
+        {
+          "id": "step:order-execution",
+          "title": "Order Execution Engine",
+          "description": "High-performance order execution system handles trade placement and monitoring.",
+          "nodeIds": [
+            "file:backend/include/order_executor.hpp"
+          ],
+          "focusAreas": [
+            "order-execution",
+            "performance"
+          ]
+        },
+        {
+          "id": "step:backtesting",
+          "title": "Backtesting Framework",
+          "description": "Comprehensive backtesting system validates strategies against historical data.",
+          "nodeIds": [
+            "file:data_service/backtest/backtest_engine.py"
+          ],
+          "focusAreas": [
+            "backtesting",
+            "validation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tour:ai-ml-integration",
+      "name": "AI/ML Integration",
+      "description": "Deep dive into the artificial intelligence and machine learning components",
+      "estimatedTime": "8 minutes",
+      "difficulty": "advanced",
+      "steps": [
+        {
+          "id": "step:ml-features",
+          "title": "Feature Engineering",
+          "description": "Machine learning feature engineering creates predictive variables from market data.",
+          "nodeIds": [
+            "file:data_service/ml/feature_engineering.py"
+          ],
+          "focusAreas": [
+            "feature-engineering",
+            "ml-preprocessing"
+          ]
+        },
+        {
+          "id": "step:ml-models",
+          "title": "ML Models",
+          "description": "Various machine learning models for prediction and classification tasks.",
+          "nodeIds": [
+            "file:data_service/ml/ml_models.py"
+          ],
+          "focusAreas": [
+            "machine-learning",
+            "prediction-models"
+          ]
+        },
+        {
+          "id": "step:nlp-processing",
+          "title": "Natural Language Processing",
+          "description": "NLP components analyze news and text data for market sentiment and insights.",
+          "nodeIds": [
+            "file:data_service/ai/nlp_processor.py",
+            "file:data_service/ai/news_processor.py"
+          ],
+          "focusAreas": [
+            "nlp",
+            "text-analysis"
+          ]
+        },
+        {
+          "id": "step:llm-integration",
+          "title": "Large Language Model Integration",
+          "description": "Integration with OpenAI GPT and other LLMs for advanced market analysis.",
+          "nodeIds": [
+            "file:data_service/ai/llm_integration.py",
+            "file:data_service/ai/langchain_agent.py"
+          ],
+          "focusAreas": [
+            "llm",
+            "generative-ai"
+          ]
+        }
+      ]
+    }
+  ]
+}

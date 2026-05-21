@@ -1,0 +1,1265 @@
+{
+  "project": "QuantMuse",
+  "version": "1.0.0",
+  "lastUpdated": "2026-05-11T10:30:48.824Z",
+  "nodes": [
+    {
+      "id": "file:.coverage",
+      "type": "file",
+      "name": ".coverage",
+      "filePath": ".coverage",
+      "summary": "Code coverage data file containing mapping of executed lines for testing analysis.",
+      "tags": [
+        "test",
+        "coverage",
+        "metadata"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:backend/CMakeLists.txt",
+      "type": "config",
+      "name": "CMakeLists.txt",
+      "filePath": "backend/CMakeLists.txt",
+      "summary": "Build configuration for the C++ backend using CMake, defining targets and dependencies.",
+      "tags": [
+        "build-system",
+        "cmake",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/include/common/types.hpp",
+      "type": "file",
+      "name": "types.hpp",
+      "filePath": "backend/include/common/types.hpp",
+      "summary": "Defines core data structures for the trading engine, including MarketData, Order, Position, and Portfolio.",
+      "tags": [
+        "data-model",
+        "types",
+        "core"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:backend/include/common/types.hpp:Order",
+      "type": "class",
+      "name": "Order",
+      "filePath": "backend/include/common/types.hpp",
+      "lineRange": [
+        51,
+        88
+      ],
+      "summary": "Represents a trading order with its properties and status tracking.",
+      "tags": [
+        "data-model",
+        "order"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:backend/include/common/types.hpp:Portfolio",
+      "type": "class",
+      "name": "Portfolio",
+      "filePath": "backend/include/common/types.hpp",
+      "lineRange": [
+        116,
+        157
+      ],
+      "summary": "Manages the overall portfolio state, including cash, positions, and risk metrics.",
+      "tags": [
+        "data-model",
+        "portfolio"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/include/data_loader.hpp",
+      "type": "file",
+      "name": "data_loader.hpp",
+      "filePath": "backend/include/data_loader.hpp",
+      "summary": "Header for the DataLoader class, responsible for loading historical and real-time market data.",
+      "tags": [
+        "data-service",
+        "header",
+        "core"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/include/order_executor.hpp",
+      "type": "file",
+      "name": "order_executor.hpp",
+      "filePath": "backend/include/order_executor.hpp",
+      "summary": "Header for the OrderExecutor class, managing the lifecycle and execution of trading orders.",
+      "tags": [
+        "execution",
+        "header",
+        "core"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/include/risk_manager.hpp",
+      "type": "file",
+      "name": "risk_manager.hpp",
+      "filePath": "backend/include/risk_manager.hpp",
+      "summary": "Header for the RiskManager class, implementing risk checks and metrics for order validation.",
+      "tags": [
+        "risk-management",
+        "header",
+        "core"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/include/strategy.hpp",
+      "type": "file",
+      "name": "strategy.hpp",
+      "filePath": "backend/include/strategy.hpp",
+      "summary": "Header defining the Strategy base class and MovingAverageStrategy implementation.",
+      "tags": [
+        "strategy",
+        "header",
+        "core"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/src/data_loader.cpp",
+      "type": "file",
+      "name": "data_loader.cpp",
+      "filePath": "backend/src/data_loader.cpp",
+      "summary": "Implementation of the DataLoader class, interfacing with data services to fetch market information.",
+      "tags": [
+        "data-service",
+        "implementation",
+        "core"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/src/main.cpp",
+      "type": "file",
+      "name": "main.cpp",
+      "filePath": "backend/src/main.cpp",
+      "summary": "Main entry point for the C++ backend, orchestrating the data loader, strategy, and execution engine.",
+      "tags": [
+        "entry-point",
+        "orchestration",
+        "main"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/src/order_executor.cpp",
+      "type": "file",
+      "name": "order_executor.cpp",
+      "filePath": "backend/src/order_executor.cpp",
+      "summary": "Implementation of the OrderExecutor class, handling the asynchronous execution loop for orders.",
+      "tags": [
+        "execution",
+        "implementation",
+        "core"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/tests/test_risk_manager.cpp",
+      "type": "file",
+      "name": "test_risk_manager.cpp",
+      "filePath": "backend/tests/test_risk_manager.cpp",
+      "summary": "Unit tests for the RiskManager class, verifying risk check logic and metric updates.",
+      "tags": [
+        "test",
+        "risk-management",
+        "cpp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:config.example.json",
+      "type": "config",
+      "name": "config.example.json",
+      "filePath": "config.example.json",
+      "summary": "Example configuration file template for the trading system, covering database, API keys, and risk parameters.",
+      "tags": [
+        "config",
+        "template",
+        "json"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "doc:CONTRIBUTING.md",
+      "type": "doc",
+      "name": "CONTRIBUTING.md",
+      "filePath": "CONTRIBUTING.md",
+      "summary": "Documentation outlining the contribution process, coding standards, and development guidelines for the project.",
+      "tags": [
+        "documentation",
+        "governance",
+        "markdown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:data_service.egg-info/PKG-INFO",
+      "type": "file",
+      "name": "PKG-INFO",
+      "filePath": "data_service.egg-info/PKG-INFO",
+      "summary": "Python package metadata file containing package description and version information.",
+      "tags": [
+        "metadata",
+        "python",
+        "packaging"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:data_service/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "data_service/__init__.py",
+      "summary": "Package initializer for the data service, exposing primary sub-modules like fetchers, processors, and ai.",
+      "tags": [
+        "package-init",
+        "python",
+        "orchestration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ai/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "data_service/ai/__init__.py",
+      "summary": "Package initializer for the AI sub-module, exposing components for sentiment analysis, news processing, and LLM integration.",
+      "tags": [
+        "package-init",
+        "python",
+        "ai"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:static/js/app.js",
+      "type": "file",
+      "name": "app.js",
+      "filePath": "static/js/app.js",
+      "summary": "Main JavaScript application logic for the frontend.",
+      "tags": [
+        "javascript",
+        "web",
+        "frontend"
+      ],
+      "complexity": "high"
+    },
+    {
+      "id": "class:static/js/app.js:TradingDashboard",
+      "type": "class",
+      "name": "TradingDashboard",
+      "filePath": "static/js/app.js",
+      "lineRange": [
+        3,
+        956
+      ],
+      "summary": "Core frontend controller for the QuantMuse dashboard.",
+      "tags": [
+        "javascript",
+        "web",
+        "controller"
+      ],
+      "complexity": "high"
+    },
+    {
+      "id": "file:run_web_simple.py",
+      "type": "file",
+      "name": "run_web_simple.py",
+      "filePath": "run_web_simple.py",
+      "summary": "A simplified web server implementation for quick testing.",
+      "tags": [
+        "web",
+        "simple",
+        "server"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/test_integration.py",
+      "type": "file",
+      "name": "test_integration.py",
+      "filePath": "tests/test_integration.py",
+      "summary": "Integration tests validating the end-to-end flow.",
+      "tags": [
+        "testing",
+        "integration",
+        "flow"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:Trading_Engine_Architecture.md",
+      "type": "file",
+      "name": "Trading_Engine_Architecture.md",
+      "filePath": "Trading_Engine_Architecture.md",
+      "summary": "Detailed architectural overview of the trading engine.",
+      "tags": [
+        "documentation",
+        "architecture",
+        "overview"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:data_service/ai/langchain_agent.py",
+      "type": "file",
+      "name": "langchain_agent.py",
+      "filePath": "data_service/ai/langchain_agent.py",
+      "summary": "Implements the LangChainAgent class, providing a high-level interface for AI-driven strategy recommendations and market analysis using LangChain.",
+      "tags": [
+        "ai",
+        "langchain",
+        "agent",
+        "strategy"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/ai/langchain_agent.py:LangChainAgent",
+      "type": "class",
+      "name": "LangChainAgent",
+      "filePath": "data_service/ai/langchain_agent.py",
+      "lineRange": [
+        36,
+        466
+      ],
+      "summary": "Main agent class for orchestrating AI workflows in QuantMuse using LangChain.",
+      "tags": [
+        "ai",
+        "langchain",
+        "agent"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ai/llm_integration.py",
+      "type": "file",
+      "name": "llm_integration.py",
+      "filePath": "data_service/ai/llm_integration.py",
+      "summary": "Handles integration with various LLM providers (OpenAI, local models) and provides a unified interface for market data analysis and signal generation.",
+      "tags": [
+        "ai",
+        "llm",
+        "openai",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/ai/llm_integration.py:LLMIntegration",
+      "type": "class",
+      "name": "LLMIntegration",
+      "filePath": "data_service/ai/llm_integration.py",
+      "lineRange": [
+        162,
+        469
+      ],
+      "summary": "Core integration class for interacting with Large Language Models.",
+      "tags": [
+        "ai",
+        "llm",
+        "integration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ai/news_processor.py",
+      "type": "file",
+      "name": "news_processor.py",
+      "filePath": "data_service/ai/news_processor.py",
+      "summary": "Processes news data, extracting relevant information and performing preliminary sentiment analysis for trading insights.",
+      "tags": [
+        "ai",
+        "news",
+        "processing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ai/nlp_processor.py",
+      "type": "file",
+      "name": "nlp_processor.py",
+      "filePath": "data_service/ai/nlp_processor.py",
+      "summary": "Provides natural language processing capabilities, including entity extraction and text normalization for market analysis.",
+      "tags": [
+        "ai",
+        "nlp",
+        "text-analysis"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ai/sentiment_analyzer.py",
+      "type": "file",
+      "name": "sentiment_analyzer.py",
+      "filePath": "data_service/ai/sentiment_analyzer.py",
+      "summary": "Analyzes sentiment of text data (news, social media) to generate sentiment scores for trading indicators.",
+      "tags": [
+        "ai",
+        "sentiment",
+        "analysis"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ai/sentiment_factor.py",
+      "type": "file",
+      "name": "sentiment_factor.py",
+      "filePath": "data_service/ai/sentiment_factor.py",
+      "summary": "Defines sentiment-based trading factors, integrating sentiment scores into the broader factor analysis framework.",
+      "tags": [
+        "ai",
+        "sentiment",
+        "factors"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ai/social_media_monitor.py",
+      "type": "file",
+      "name": "social_media_monitor.py",
+      "filePath": "data_service/ai/social_media_monitor.py",
+      "summary": "Monitors social media platforms for relevant trading mentions and sentiment trends.",
+      "tags": [
+        "ai",
+        "social-media",
+        "monitoring"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/api/api_manager.py",
+      "type": "file",
+      "name": "api_manager.py",
+      "filePath": "data_service/api/api_manager.py",
+      "summary": "Manages API interactions, including request orchestration, rate limiting, and response caching.",
+      "tags": [
+        "api",
+        "networking",
+        "orchestration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/api/api_manager.py:APIManager",
+      "type": "class",
+      "name": "APIManager",
+      "filePath": "data_service/api/api_manager.py",
+      "lineRange": [
+        35,
+        322
+      ],
+      "summary": "Core manager for external API requests and data fetching.",
+      "tags": [
+        "api",
+        "orchestration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/backtest/backtest_engine.py",
+      "type": "file",
+      "name": "backtest_engine.py",
+      "filePath": "data_service/backtest/backtest_engine.py",
+      "summary": "Implements the core backtesting engine, simulating strategy execution on historical data and tracking portfolio state.",
+      "tags": [
+        "backtest",
+        "simulation",
+        "strategy"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/backtest/backtest_engine.py:BacktestEngine",
+      "type": "class",
+      "name": "BacktestEngine",
+      "filePath": "data_service/backtest/backtest_engine.py",
+      "lineRange": [
+        28,
+        222
+      ],
+      "summary": "Simulates trading strategies against historical market data.",
+      "tags": [
+        "backtest",
+        "simulation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/backtest/performance_analyzer.py",
+      "type": "file",
+      "name": "performance_analyzer.py",
+      "filePath": "data_service/backtest/performance_analyzer.py",
+      "summary": "Analyzes backtest results, calculating performance and risk metrics like Sharpe ratio, drawdown, and win rate.",
+      "tags": [
+        "backtest",
+        "analytics",
+        "risk-metrics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "data_service/config.py",
+      "summary": "Central configuration management for the Python data service, loading settings from environment variables and JSON files.",
+      "tags": [
+        "config",
+        "python",
+        "management"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:data_service/dashboard/dashboard_app.py",
+      "type": "file",
+      "name": "dashboard_app.py",
+      "filePath": "data_service/dashboard/dashboard_app.py",
+      "summary": "Main entry point for the Streamlit-based dashboard application, orchestrating the UI and data visualizations.",
+      "tags": [
+        "dashboard",
+        "streamlit",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/factors/factor_backtest.py",
+      "type": "file",
+      "name": "factor_backtest.py",
+      "filePath": "data_service/factors/factor_backtest.py",
+      "summary": "Simulates factor-based strategy performance, calculating metrics like Information Coefficient (IC) and factor returns.",
+      "tags": [
+        "factors",
+        "backtest",
+        "analytics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/factors/factor_backtest.py:FactorBacktest",
+      "type": "class",
+      "name": "FactorBacktest",
+      "filePath": "data_service/factors/factor_backtest.py",
+      "lineRange": [
+        36,
+        408
+      ],
+      "summary": "Core engine for backtesting factor performance.",
+      "tags": [
+        "factors",
+        "backtest"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/factors/factor_calculator.py",
+      "type": "file",
+      "name": "factor_calculator.py",
+      "filePath": "data_service/factors/factor_calculator.py",
+      "summary": "Calculates various financial factors, including momentum, value, quality, and technical indicators.",
+      "tags": [
+        "factors",
+        "financial-analysis",
+        "calculator"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/factors/factor_calculator.py:FactorCalculator",
+      "type": "class",
+      "name": "FactorCalculator",
+      "filePath": "data_service/factors/factor_calculator.py",
+      "lineRange": [
+        18,
+        351
+      ],
+      "summary": "Library of financial factor calculations.",
+      "tags": [
+        "factors",
+        "financial-analysis"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/fetchers/alpha_vantage_fetcher.py",
+      "type": "file",
+      "name": "alpha_vantage_fetcher.py",
+      "filePath": "data_service/fetchers/alpha_vantage_fetcher.py",
+      "summary": "Specialized data fetcher for Alpha Vantage, retrieving historical price and fundamental data.",
+      "tags": [
+        "data-fetching",
+        "alpha-vantage",
+        "api"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/fetchers/binance_fetcher.py",
+      "type": "file",
+      "name": "binance_fetcher.py",
+      "filePath": "data_service/fetchers/binance_fetcher.py",
+      "summary": "Specialized data fetcher for Binance, retrieving real-time and historical cryptocurrency data.",
+      "tags": [
+        "data-fetching",
+        "binance",
+        "crypto"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ml/feature_engineering.py",
+      "type": "file",
+      "name": "feature_engineering.py",
+      "filePath": "data_service/ml/feature_engineering.py",
+      "summary": "Implements comprehensive feature engineering, including technical indicators, statistical features, scaling, and dimensionality reduction via PCA.",
+      "tags": [
+        "ml",
+        "feature-engineering",
+        "analytics"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/ml/feature_engineering.py:FeatureEngineer",
+      "type": "class",
+      "name": "FeatureEngineer",
+      "filePath": "data_service/ml/feature_engineering.py",
+      "lineRange": [
+        37,
+        535
+      ],
+      "summary": "Core engine for generating features from market data.",
+      "tags": [
+        "ml",
+        "feature-engineering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/ml/ml_models.py",
+      "type": "file",
+      "name": "ml_models.py",
+      "filePath": "data_service/ml/ml_models.py",
+      "summary": "Defines and manages machine learning models for market prediction, including training, evaluation, and inference pipelines.",
+      "tags": [
+        "ml",
+        "models",
+        "prediction"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/realtime/real_time_feed.py",
+      "type": "file",
+      "name": "real_time_feed.py",
+      "filePath": "data_service/realtime/real_time_feed.py",
+      "summary": "Manages real-time data streaming from external sources, providing a unified feed for the system.",
+      "tags": [
+        "real-time",
+        "streaming",
+        "feed"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/realtime/websocket_manager.py",
+      "type": "file",
+      "name": "websocket_manager.py",
+      "filePath": "data_service/realtime/websocket_manager.py",
+      "summary": "Handles WebSocket connections for low-latency data ingestion from exchanges.",
+      "tags": [
+        "real-time",
+        "websockets",
+        "ingestion"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/storage/database_manager.py",
+      "type": "file",
+      "name": "database_manager.py",
+      "filePath": "data_service/storage/database_manager.py",
+      "summary": "Orchestrates database operations, including schema management and persistence for market data, trades, and performance.",
+      "tags": [
+        "storage",
+        "database",
+        "sqlite"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/storage/database_manager.py:DatabaseManager",
+      "type": "class",
+      "name": "DatabaseManager",
+      "filePath": "data_service/storage/database_manager.py",
+      "lineRange": [
+        9,
+        182
+      ],
+      "summary": "Core manager for database persistence.",
+      "tags": [
+        "storage",
+        "database"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/strategies/builtin_strategies.py",
+      "type": "file",
+      "name": "builtin_strategies.py",
+      "filePath": "data_service/strategies/builtin_strategies.py",
+      "summary": "Provides a collection of standard trading strategies like Momentum, Value, and Mean Reversion.",
+      "tags": [
+        "strategy",
+        "momentum",
+        "value"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/strategies/strategy_base.py",
+      "type": "file",
+      "name": "strategy_base.py",
+      "filePath": "data_service/strategies/strategy_base.py",
+      "summary": "Abstract base class defining the standard interface and lifecycle for all trading strategies.",
+      "tags": [
+        "strategy",
+        "base-class",
+        "interface"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/strategies/strategy_base.py:StrategyBase",
+      "type": "class",
+      "name": "StrategyBase",
+      "filePath": "data_service/strategies/strategy_base.py",
+      "lineRange": [
+        1,
+        100
+      ],
+      "summary": "Base class for all QuantMuse strategies.",
+      "tags": [
+        "strategy",
+        "base-class"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/strategies/strategy_runner.py",
+      "type": "file",
+      "name": "strategy_runner.py",
+      "filePath": "data_service/strategies/strategy_runner.py",
+      "summary": "Orchestrates the execution of trading strategies, managing data flow and signal generation loops.",
+      "tags": [
+        "strategy",
+        "execution",
+        "orchestration"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/strategies/strategy_runner.py:StrategyRunner",
+      "type": "class",
+      "name": "StrategyRunner",
+      "filePath": "data_service/strategies/strategy_runner.py",
+      "lineRange": [
+        10,
+        250
+      ],
+      "summary": "Core engine for running strategies.",
+      "tags": [
+        "strategy",
+        "execution"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/vector_db/vector_store.py",
+      "type": "file",
+      "name": "vector_store.py",
+      "filePath": "data_service/vector_db/vector_store.py",
+      "summary": "Implements a vector database for storing and searching semantic embeddings of market news and data.",
+      "tags": [
+        "vector-db",
+        "storage",
+        "embeddings"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:data_service/vector_db/vector_store.py:VectorStore",
+      "type": "class",
+      "name": "VectorStore",
+      "filePath": "data_service/vector_db/vector_store.py",
+      "lineRange": [
+        22,
+        375
+      ],
+      "summary": "Core manager for vector persistence and search.",
+      "tags": [
+        "vector-db",
+        "storage"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/web/api_server.py",
+      "type": "file",
+      "name": "api_server.py",
+      "filePath": "data_service/web/api_server.py",
+      "summary": "Implements the FastAPI-based web server for exposing QuantMuse services via REST API.",
+      "tags": [
+        "web",
+        "fastapi",
+        "api"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:data_service/web/dashboard.py",
+      "type": "file",
+      "name": "dashboard.py",
+      "filePath": "data_service/web/dashboard.py",
+      "summary": "Implements the interactive dashboard for visualizing market data and strategy performance.",
+      "tags": [
+        "web",
+        "dashboard",
+        "visualization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:examples/ai_sentiment_analysis.py",
+      "type": "file",
+      "name": "ai_sentiment_analysis.py",
+      "filePath": "examples/ai_sentiment_analysis.py",
+      "summary": "Example script showcasing the end-to-end AI sentiment analysis pipeline.",
+      "tags": [
+        "example",
+        "ai",
+        "sentiment"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:examples/langchain_llm_demo.py",
+      "type": "file",
+      "name": "langchain_llm_demo.py",
+      "filePath": "examples/langchain_llm_demo.py",
+      "summary": "Demonstrates integration with LangChain for complex LLM-driven reasoning.",
+      "tags": [
+        "example",
+        "langchain",
+        "ai"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:main.py",
+      "type": "file",
+      "name": "main.py",
+      "filePath": "main.py",
+      "summary": "Main entry point for the QuantMuse Python application.",
+      "tags": [
+        "entry-point",
+        "orchestration",
+        "app"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:README_AI_Modules.md",
+      "type": "file",
+      "name": "README_AI_Modules.md",
+      "filePath": "README_AI_Modules.md",
+      "summary": "Documentation for the AI modules.",
+      "tags": [
+        "documentation",
+        "ai",
+        "nlp"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/include/common/types.hpp",
+      "target": "class:backend/include/common/types.hpp:Order",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/include/common/types.hpp",
+      "target": "class:backend/include/common/types.hpp:Portfolio",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:backend/include/data_loader.hpp",
+      "target": "file:backend/include/common/types.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/include/order_executor.hpp",
+      "target": "file:backend/include/common/types.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/include/risk_manager.hpp",
+      "target": "file:backend/include/common/types.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/include/strategy.hpp",
+      "target": "file:backend/include/common/types.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/src/data_loader.cpp",
+      "target": "file:backend/include/data_loader.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/src/main.cpp",
+      "target": "file:backend/include/data_loader.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/src/main.cpp",
+      "target": "file:backend/include/strategy.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/src/main.cpp",
+      "target": "file:backend/include/risk_manager.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/src/main.cpp",
+      "target": "file:backend/include/order_executor.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:backend/src/order_executor.cpp",
+      "target": "file:backend/include/order_executor.hpp",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "config:backend/CMakeLists.txt",
+      "target": "file:backend/src/main.cpp",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:backend/tests/test_risk_manager.cpp",
+      "target": "file:backend/include/risk_manager.hpp",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:data_service/__init__.py",
+      "target": "file:data_service/ai/__init__.py",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:static/js/app.js",
+      "target": "class:static/js/app.js:TradingDashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:static/js/app.js",
+      "target": "file:data_service/web/api_server.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:run_web_simple.py",
+      "target": "file:static/index.html",
+      "type": "serves",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "file:data_service/fetchers/binance_fetcher.py",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_integration.py",
+      "target": "file:data_service/processors/data_processor.py",
+      "type": "tests",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:Trading_Engine_Architecture.md",
+      "target": "file:backend/include/data_loader.hpp",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:data_service/ai/langchain_agent.py",
+      "target": "class:data_service/ai/langchain_agent.py:LangChainAgent",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/ai/llm_integration.py",
+      "target": "class:data_service/ai/llm_integration.py:LLMIntegration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "class:data_service/ai/langchain_agent.py:LangChainAgent",
+      "target": "file:data_service/ai/llm_integration.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:data_service/ai/sentiment_factor.py",
+      "target": "file:data_service/ai/sentiment_analyzer.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:data_service/ai/news_processor.py",
+      "target": "file:data_service/ai/sentiment_analyzer.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:data_service/api/api_manager.py",
+      "target": "class:data_service/api/api_manager.py:APIManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/backtest/backtest_engine.py",
+      "target": "class:data_service/backtest/backtest_engine.py:BacktestEngine",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/backtest/performance_analyzer.py",
+      "target": "file:data_service/backtest/backtest_engine.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:data_service/dashboard/dashboard_app.py",
+      "target": "file:data_service/backtest/backtest_engine.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:data_service/dashboard/dashboard_app.py",
+      "target": "file:data_service/dashboard/charts.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:data_service/factors/factor_backtest.py",
+      "target": "class:data_service/factors/factor_backtest.py:FactorBacktest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/factors/factor_calculator.py",
+      "target": "class:data_service/factors/factor_calculator.py:FactorCalculator",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/factors/factor_backtest.py",
+      "target": "file:data_service/factors/factor_calculator.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:data_service/factors/stock_selector.py",
+      "target": "file:data_service/factors/factor_calculator.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:data_service/ml/feature_engineering.py",
+      "target": "class:data_service/ml/feature_engineering.py:FeatureEngineer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/ml/ml_models.py",
+      "target": "file:data_service/ml/feature_engineering.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:data_service/realtime/real_time_feed.py",
+      "target": "file:data_service/realtime/websocket_manager.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/ml/ml_models.py",
+      "target": "file:data_service/realtime/real_time_feed.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:data_service/storage/database_manager.py",
+      "target": "class:data_service/storage/database_manager.py:DatabaseManager",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/strategies/strategy_base.py",
+      "target": "class:data_service/strategies/strategy_base.py:StrategyBase",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/strategies/builtin_strategies.py",
+      "target": "file:data_service/strategies/strategy_base.py",
+      "type": "extends",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/storage/database_manager.py",
+      "target": "file:data_service/storage/cache_manager.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:data_service/strategies/strategy_runner.py",
+      "target": "class:data_service/strategies/strategy_runner.py:StrategyRunner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/vector_db/vector_store.py",
+      "target": "class:data_service/vector_db/vector_store.py:VectorStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/strategies/strategy_runner.py",
+      "target": "file:data_service/strategies/strategy_registry.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:data_service/web/api_server.py",
+      "target": "file:data_service/strategies/strategy_runner.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:examples/ai_sentiment_analysis.py",
+      "target": "file:data_service/ai/sentiment_analyzer.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:examples/ai_sentiment_analysis.py",
+      "target": "file:data_service/vector_db/vector_store.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:data_service/web/dashboard.py",
+      "target": "file:data_service/web/api_server.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:main.py",
+      "target": "file:data_service/web/api_server.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:main.py",
+      "target": "file:data_service/realtime/real_time_feed.py",
+      "type": "uses",
+      "direction": "forward",
+      "weight": 1
+    }
+  ]
+}

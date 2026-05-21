@@ -1,0 +1,154 @@
+{
+  "metadata": {
+    "generated_at": "2026-05-11T12:54:55.398031",
+    "project": "QuantMuse",
+    "analysis_version": "1.0.0",
+    "total_insights": 11
+  },
+  "executive_summary": "\n# QuantMuse Architecture Analysis Report\n\n## Executive Summary\n\nQuantMuse is a sophisticated quantitative trading system implementing a hybrid architecture that combines Python's data processing and AI capabilities with C++ performance for critical trading operations. The system comprises 65 components interconnected through 52 dependencies, organized into 5 major business domains.\n\n## Key Architectural Characteristics\n\n### Technology Stack\n- **Hybrid Architecture**: Python for flexibility and AI integration, C++ for performance-critical components\n- **Modular Design**: Clear separation between data processing, analysis, strategy execution, and risk management\n- **Multi-Source Data**: Integration with Binance, Yahoo Finance, and Alpha Vantage for comprehensive market coverage\n\n### Business Domains\nThe system implements 5 core business domains:\n- Trading Data Management\n- Quantitative Analysis  \n- AI/ML Integration\n- Trading Strategy Execution\n- Backtesting & Analysis\n\n### System Complexity\n- **Component Count**: 65 total components\n- **Dependency Complexity**: 52 inter-component dependencies\n- **Business Processes**: 4 end-to-end trading flows\n- **Implementation Steps**: 10 detailed operational steps\n\n## Strategic Recommendations\n\n1. **Maintain Architecture Boundaries**: Preserve clear separation between Python and C++ layers\n2. **Enhance Risk Management**: Strengthen real-time risk monitoring and controls\n3. **Improve Testing Coverage**: Focus on critical trading paths and failure scenarios\n4. **Documentation Investment**: Create comprehensive API and process documentation\n5. **Performance Monitoring**: Implement real-time system and trading performance metrics\n\n## Conclusion\n\nQuantMuse represents a well-architected quantitative trading system with appropriate technology choices for its domain. The hybrid architecture provides both flexibility for AI integration and performance for trading execution. Continued focus on risk management, testing, and documentation will be key to scaling the system successfully.\n",
+  "insights": [
+    {
+      "category": "Technology Stack",
+      "title": "Hybrid Architecture Pattern",
+      "description": "QuantMuse uses a hybrid architecture with 45 Python components for data processing/AI and 11 C++ components for high-performance trading execution.",
+      "impact": "high",
+      "recommendations": [
+        "Maintain clear interface boundaries between Python and C++ layers",
+        "Consider using pybind11 for seamless Python-C++ integration",
+        "Implement comprehensive error handling across language boundaries"
+      ]
+    },
+    {
+      "category": "Configuration Management",
+      "title": "Structured Configuration Approach",
+      "description": "System uses 2 configuration files for build, deployment, and runtime settings.",
+      "impact": "medium",
+      "recommendations": [
+        "Centralize configuration management",
+        "Implement environment-specific configurations",
+        "Add configuration validation and documentation"
+      ]
+    },
+    {
+      "category": "Architecture Pattern",
+      "title": "Core-Periphery Architecture",
+      "description": "System has 7 core components that form the foundation of the trading engine, with peripheral services for data fetching, analysis, and visualization.",
+      "impact": "high",
+      "recommendations": [
+        "Maintain strict dependency rules for core components",
+        "Implement comprehensive testing for core functionality",
+        "Document core component interfaces and contracts"
+      ]
+    },
+    {
+      "category": "Data Flow",
+      "title": "Complex Data Dependencies",
+      "description": "System has 30 data dependencies indicating complex information flow patterns.",
+      "impact": "medium",
+      "recommendations": [
+        "Consider implementing a message bus for decoupled communication",
+        "Document critical data flow paths",
+        "Monitor data pipeline performance and bottlenecks"
+      ]
+    },
+    {
+      "category": "Domain Architecture",
+      "title": "Multi-Domain Trading System",
+      "description": "QuantMuse implements 5 major business domains: Trading Data Management, Quantitative Analysis, AI/ML Integration, Trading Strategy Execution, Backtesting & Analysis",
+      "impact": "high",
+      "recommendations": [
+        "Maintain clear domain boundaries and interfaces",
+        "Implement domain-specific testing strategies",
+        "Consider domain-driven design principles for future development"
+      ]
+    },
+    {
+      "category": "Trading Logic",
+      "title": "Structured Trading Workflows",
+      "description": "System implements 1 dedicated trading flows covering strategy execution, risk management, and order processing.",
+      "impact": "high",
+      "recommendations": [
+        "Implement comprehensive audit trails for trading flows",
+        "Add real-time monitoring and alerting for trading operations",
+        "Ensure fail-safe mechanisms for critical trading paths"
+      ]
+    },
+    {
+      "category": "AI/ML Integration",
+      "title": "Advanced Analytics Integration",
+      "description": "System incorporates AI/ML capabilities through 1 dedicated domains for sentiment analysis, prediction, and market insights.",
+      "impact": "medium",
+      "recommendations": [
+        "Implement model versioning and A/B testing",
+        "Monitor AI model performance and drift",
+        "Establish data governance for ML pipelines"
+      ]
+    },
+    {
+      "category": "Risk Management",
+      "title": "Dedicated Risk Infrastructure",
+      "description": "System includes 5 risk management components for position sizing, order validation, and portfolio monitoring.",
+      "impact": "high",
+      "recommendations": [
+        "Implement real-time risk monitoring dashboards",
+        "Add stress testing capabilities",
+        "Ensure regulatory compliance checks are comprehensive"
+      ]
+    },
+    {
+      "category": "Quality Assurance",
+      "title": "Testing Infrastructure",
+      "description": "System includes 6 testing components for unit and integration testing.",
+      "impact": "medium",
+      "recommendations": [
+        "Expand test coverage to critical trading paths",
+        "Implement automated regression testing",
+        "Add performance and load testing for trading components"
+      ]
+    },
+    {
+      "category": "Development Workflow",
+      "title": "Polyglot Development Environment",
+      "description": "Development environment spans 45 Python files and 11 C++ files requiring specialized tooling and expertise.",
+      "impact": "medium",
+      "recommendations": [
+        "Set up language-specific development environments",
+        "Implement cross-language debugging capabilities",
+        "Create comprehensive build and deployment pipelines",
+        "Establish code quality standards for both languages"
+      ]
+    },
+    {
+      "category": "Documentation",
+      "title": "Documentation Coverage",
+      "description": "System has 3 documentation files. Comprehensive documentation is critical for complex trading systems.",
+      "impact": "medium",
+      "recommendations": [
+        "Create API documentation for all interfaces",
+        "Document trading strategies and risk parameters",
+        "Maintain architectural decision records (ADRs)",
+        "Create onboarding guides for new developers"
+      ]
+    }
+  ],
+  "statistics": {
+    "total_nodes": 65,
+    "total_edges": 52,
+    "node_types": {
+      "file": 48,
+      "config": 2,
+      "class": 14,
+      "doc": 1
+    },
+    "edge_types": {
+      "contains": 15,
+      "imports": 10,
+      "configures": 1,
+      "tests": 3,
+      "uses": 20,
+      "serves": 1,
+      "documents": 1,
+      "extends": 1
+    }
+  }
+}
