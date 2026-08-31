@@ -1,0 +1,51 @@
+name: Architecture Federation
+
+on:
+  push:
+    branches: [feat/architecture-ir-federation]
+    paths:
+      - "architecture/**"
+      - "tests/test_architecture_ir_federation.py"
+      - ".github/workflows/architecture-federation.yml"
+  pull_request:
+    paths:
+      - "architecture/**"
+      - "tests/test_architecture_ir_federation.py"
+      - ".github/workflows/architecture-federation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  HPL_ARCHITECTURE_JOIN_SHA: be1e37d396220c5bc3423b53a8228048cdf10307
+
+jobs:
+  certify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install hardened HPL federation
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest
+          python -m pip install "git+https://github.com/Mopati123/hpl-spec.git@${HPL_ARCHITECTURE_JOIN_SHA}"
+      - name: Run AI authority-boundary tests
+        run: python -m pytest -q tests/test_architecture_ir_federation.py
+      - name: Compile and verify constitutional binding
+        run: |
+          python - <<'PY'
+          from architecture.adapter import compile_with_hpl
+          result = compile_with_hpl()
+          c = result["federation_contract"]
+          ir = result["architecture_ir"]
+          p = result["program_ir"]
+          assert ir["authority"]["execution_owner"] == c["execution_owner"]
+          assert ir["evidence_contract"]["required"] is c["evidence_required"]
+          assert ir["reconciliation_contract"]["required"] is c["reconciliation_required"]
+          assert p["scheduler"]["collapse_policy"] == c["program_ir_collapse_policy"]
+          print("QUANTMUSE_ARCHITECTURE_FEDERATION_CERTIFIED")
+          PY
