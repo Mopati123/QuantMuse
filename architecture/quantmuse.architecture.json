@@ -1,0 +1,81 @@
+{
+  "architecture_id": "quantmuse.ai_quant_research.v1",
+  "domain": "quantitative_trading_ai",
+  "states": [
+    {"id": "market_data_state"},
+    {"id": "feature_state"},
+    {"id": "model_state"},
+    {"id": "strategy_state"},
+    {"id": "portfolio_state"},
+    {"id": "risk_state"},
+    {"id": "execution_state"},
+    {"id": "evidence_state"}
+  ],
+  "observables": [
+    {"id": "observe_market_data"},
+    {"id": "observe_factor_state"},
+    {"id": "observe_model_output"},
+    {"id": "observe_portfolio_exposure"},
+    {"id": "observe_risk_limits"},
+    {"id": "observe_execution_result"}
+  ],
+  "dynamics": [
+    {"id": "market_data_dynamics"},
+    {"id": "factor_dynamics"},
+    {"id": "strategy_dynamics"},
+    {"id": "portfolio_dynamics"},
+    {"id": "risk_dynamics"}
+  ],
+  "proposals": [
+    {"id": "propose_llm_market_interpretation"},
+    {"id": "propose_ml_signal"},
+    {"id": "propose_strategy_action"},
+    {"id": "propose_portfolio_rebalance"},
+    {"id": "propose_order_intent"}
+  ],
+  "constraints": [
+    {"id": "project_data_sufficiency"},
+    {"id": "project_model_output_to_proposal_only"},
+    {"id": "project_strategy_admissibility"},
+    {"id": "project_position_limits"},
+    {"id": "project_drawdown_limits"},
+    {"id": "project_leverage_limits"},
+    {"id": "project_portfolio_constraints"},
+    {"id": "project_execution_boundary"},
+    {"id": "project_total_admissibility"}
+  ],
+  "invariants": [
+    {"id": "model_output_is_not_authority", "expression": "LLM or ML output may propose but cannot authorize execution"},
+    {"id": "recommendation_is_not_evidence", "expression": "model confidence or prose recommendation is not execution evidence"},
+    {"id": "projection_before_execution", "expression": "risk and portfolio projectors precede execution authority"},
+    {"id": "scheduler_sovereignty", "expression": "only hpl.scheduler owns universal execution authority"},
+    {"id": "refusal_first", "expression": "inadmissible proposals refuse without irreversible effect"},
+    {"id": "evidence_required", "expression": "critical outcomes emit deterministic evidence"},
+    {"id": "reconciliation_required", "expression": "execution outcomes reconcile against intended state"}
+  ],
+  "authorities": [
+    {"id": "quantmuse_execution_authority", "kind": "execution", "owner": "hpl.scheduler"}
+  ],
+  "effects": [
+    {"id": "commit_backtest_action"},
+    {"id": "commit_paper_order"},
+    {"id": "commit_external_order_intent"}
+  ],
+  "evidence": [
+    {"id": "emit_model_proposal_receipt"},
+    {"id": "emit_execution_receipt"},
+    {"id": "emit_refusal_receipt"}
+  ],
+  "reconciliation": [
+    {"id": "reconcile_order_state"},
+    {"id": "reconcile_portfolio_state"},
+    {"id": "reconcile_risk_state"}
+  ],
+  "metadata": {
+    "federation_contract": "hpl.architecture-federation@1.0.0",
+    "ai_boundary": "proposal_only",
+    "universal_execution_owner": "hpl.scheduler",
+    "source_components": ["LLM", "ML", "factor analysis", "strategies", "portfolio", "risk", "C++ execution backend"],
+    "safety": "ArchitectureSpec does not certify profitability, model correctness, broker connectivity, or production trading readiness"
+  }
+}
